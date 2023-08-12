@@ -1,0 +1,9 @@
+.idea/
+build/*
+target/
+metastore_db/
+.gradle/
+.Ds_Store
+derby.log
+
+build/*
