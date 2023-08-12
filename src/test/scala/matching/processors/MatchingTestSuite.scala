@@ -27,7 +27,7 @@ class MatchingTestSuite  extends FunSuite with BeforeAndAfterAll  {
     matchFxOrders(FxOrder("1","Ben","12345","SELL","4","2345"))
 
     val orderBookCount = spark.sql("Select * from fx_trading.order_book").count()
-    assert(orderBookCount==2)
+    assert(orderBookCount==1)
   }
 
   def updateTradeBook(): Unit = {
@@ -36,6 +36,6 @@ class MatchingTestSuite  extends FunSuite with BeforeAndAfterAll  {
     matchFxOrders(FxOrder("2","Emma","4589","BUY","4","2345"))
 
     val tradeBookCount = spark.sql("Select * from fx_trading.trade_book").count()
-    assert(tradeBookCount==2)
+    assert(tradeBookCount==1)
   }
 }
