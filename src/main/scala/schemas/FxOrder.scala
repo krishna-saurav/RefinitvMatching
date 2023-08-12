@@ -6,7 +6,7 @@ case class FxOrder (
           order_time: String,
           order_type: String,
           quantity: String,
-          price: String
+          price: Int
         )
 
 
@@ -15,5 +15,5 @@ case class MatchingRecord (
                      target_order_id: String,
                      order_time: String,
                      quantity: String,
-                     price: String
+                     price: Int
                    )

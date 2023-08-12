@@ -32,6 +32,15 @@ object MatchingService {
       .toDF()
       .write
       .saveAsTable(s"fx_trading.trade_book")
+
+    List.empty[FxOrder]
+      .toDF()
+      .write
+      .saveAsTable(s"fx_trading.order_book_temp")
+    List.empty[MatchingRecord]
+      .toDF()
+      .write
+      .saveAsTable(s"fx_trading.trade_book_temp")
   }
 
   /* Save a particular order to Order book */
@@ -88,7 +97,7 @@ object MatchingService {
       case "BUY" => spark.sql(
         s"""select min(price) from fx_trading.order_book where
            |order_type='${targetOrderType}'
-           |quantity='${order.quantity}'
+           |and quantity='${order.quantity}'
            |""".stripMargin)
         .collect()(0)
         .get(0)
